@@ -1,0 +1,850 @@
+.studio-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: #111;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Root container for the entire page */
+.podcast-session-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #f0f0f0;
+  background-color: #000; /* Fallback if the background image doesn't load */
+}
+
+/* Studio background image - black/dark aesthetic */
+.studio-background {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1590603013991-c3519208b06b?auto=format&fit=crop&q=80&w=1920&h=1080');
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.3);
+  z-index: 0;
+}
+
+/* Top navigation bar / Session key area */
+.session-topnav {
+  position: relative;
+  z-index: 2;
+  margin-top: 1rem;
+  width: 95%;
+  max-width: 1100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.session-key {
+  background: rgba(255,255,255,0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+}
+
+.session-key span {
+  font-weight: 600;
+  margin-left: 0.5rem;
+  color: #50fa7b;
+}
+
+/* Button for share functionality */
+.share-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.share-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255,255,255,0.2);
+  border: none;
+  border-radius: 0.5rem;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.share-button:hover {
+  background: rgba(255,255,255,0.3);
+}
+
+.share-button .icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Session Header (title & recording status) */
+.session-header {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.session-header h1 {
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+  font-weight: 800;
+}
+
+/* Recording indicator */
+.recording-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: #ff5555;
+  font-weight: 600;
+  margin-top: 0.25rem;
+}
+
+.recording-indicator .indicator-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.recording-time {
+  margin-left: 0.5rem;
+}
+
+/* Main content area (video and so forth) */
+.studio-content {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.studio-top-bar {
+  z-index: 2;
+  position: relative;
+  text-align: center;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  font-weight: 500;
+}
+
+.studio-content {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.studio-table {
+  position: relative;
+  width: 80vmin;
+  height: 80vmin;
+  border-radius: 50%;
+  background: rgba(70, 70, 70, 0.8);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+}
+
+.studio-chair {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background-image: url('https://images.unsplash.com/photo-1590811300315-e2b86b66057c?auto=format&fit=crop&q=80');
+  background-size: cover;
+  border-radius: 50%;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  transform-origin: center;
+}
+
+.studio-chair:nth-child(1) {
+  top: 0px; 
+  left: 50%; 
+  transform: translateX(-50%);
+}
+.studio-chair:nth-child(2) {
+  right: 0; 
+  top: 50%; 
+  transform: translateY(-50%);
+}
+.studio-chair:nth-child(3) {
+  bottom: 0;
+  left: 50%; 
+  transform: translateX(-50%);
+}
+.studio-chair:nth-child(4) {
+  left: 0; 
+  top: 50%; 
+  transform: translateY(-50%);
+}
+
+.video-seat {
+  position: absolute;
+  top: -70px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 140px;
+  height: 100px;
+  background: black;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid #fff;
+}
+
+.video-seat video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.studio-control-bar {
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 1rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.control-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.control-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.control-button-end {
+  background: #ef4444;
+}
+
+.control-button-end:hover {
+  background: #dc2626;
+}
+
+.recording-indicator {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: #ef4444;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.recording-timer {
+  margin-left: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.participant-container {
+  position: relative;
+  width: 800px;
+  height: 600px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.studio-scene {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.face-container {
+  position: absolute;
+  top: 100px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  background: #000;
+  z-index: 2;
+}
+
+.processed-face {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.studio-microphone {
+  position: absolute;
+  left: 50px;
+  top: 200px;
+  width: 100px;
+  height: 250px;
+  background-image: url('https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&q=80');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 3;
+}
+
+.video-feed {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 5px solid white;
+}
+
+.controls {
+  position: absolute;
+  bottom: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.control-button {
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.control-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.control-button.active {
+  background: rgba(255, 0, 0, 0.5);
+}
+
+.control-button.end {
+  background: rgba(255, 0, 0, 0.8);
+}
+
+.control-button.end:hover {
+  background: #dc2626;
+}
+
+.studio-stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+}
+
+.seat {
+  position: absolute;
+  width: 200px;
+  height: 400px; /* Simulating full-body space */
+}
+
+.seat-host {
+  left: 50%;
+  bottom: 10%;
+  transform: translateX(-50%);
+}
+
+.seat-0 {
+  left: 10%;
+  bottom: 10%;
+}
+.seat-1 {
+  left: 30%;
+  bottom: 10%;
+}
+.seat-2 {
+  left: 50%;
+  bottom: 10%;
+  transform: translateX(-50%);
+}
+.seat-3 {
+  left: 70%;
+  bottom: 10%;
+}
+.seat-4 {
+  left: 90%;
+  bottom: 10%;
+}
+
+.full-body-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px; /* or 0 for a rectangular shape */
+}
+
+.participant-seat {
+  position: absolute;
+  width: 220px;
+  height: 280px;
+  transform-origin: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.seat-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  perspective: 1000px;
+}
+
+.chair {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 180px;
+  height: 200px;
+  background-image: url('https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?auto=format&fit=crop&q=80');
+  background-size: cover;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.video-container {
+  position: relative;
+  width: 1000px;
+  max-width: 90%;
+  aspect-ratio: 16 / 9;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+}
+
+.video-stream {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #000;
+}
+
+.controls {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 2rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.control-button {
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+  font-size: 1.1rem;
+}
+
+.control-button:hover {
+  background: rgba(255,255,255,0.3);
+  transform: translateY(-2px);
+}
+
+.control-button.recording-active {
+  background: linear-gradient(to bottom right, #ff4444, #cc0000);
+}
+
+.control-button.end-call {
+  background: linear-gradient(to bottom right, #dc2626, #b91c1c);
+}
+
+.control-button.end-call:hover {
+  background: linear-gradient(to bottom right, #ef4444, #b91c1c);
+}
+
+.indicator-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.video-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 150px;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  background: #000;
+  z-index: 2;
+}
+
+.video-stream {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Participant positions */
+.participant-seat:nth-child(1) { transform: rotate(0deg) translateY(-50%) translateX(-50%) rotate(0deg); }
+.participant-seat:nth-child(2) { transform: rotate(72deg) translateY(-50%) translateX(-50%) rotate(-72deg); }
+.participant-seat:nth-child(3) { transform: rotate(144deg) translateY(-50%) translateX(-50%) rotate(-144deg); }
+.participant-seat:nth-child(4) { transform: rotate(216deg) translateY(-50%) translateX(-50%) rotate(-216deg); }
+.participant-seat:nth-child(5) { transform: rotate(288deg) translateY(-50%) translateX(-50%) rotate(-288deg); }
+
+.participant-name {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  white-space: nowrap;
+}
+
+.video-section {
+  position: relative;
+  width: 80%;
+  max-width: 800px;
+  aspect-ratio: 16 / 9;
+  background: #222;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 20px 0;
+}
+
+.video-element {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.control-bar {
+  display: flex;
+  gap: 1rem;
+}
+
+.control-button {
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(to bottom right, #4f46e5, #3b82f6);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.control-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+}
+
+.recording-active {
+  background: linear-gradient(to bottom right, #ef4444, #b91c1c);
+}
+
+.end-call {
+  background: linear-gradient(to bottom right, #dc2626, #b91c1c);
+}
+
+.indicator-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.invite-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(20, 20, 20, 0.95);
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  width: 280px;
+}
+
+.invite-popup-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.invite-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: white;
+  margin: 0;
+}
+
+.invite-key-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  width: 100%;
+}
+
+.invite-key {
+  font-family: monospace;
+  font-size: 1rem;
+  color: #50fa7b;
+  margin: 0;
+  flex: 1;
+  word-break: break-all;
+}
+
+.share-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.copy-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 0.5rem;
+  color: white;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.copy-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.share-option {
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 1px solid transparent;
+}
+
+.share-option.whatsapp {
+  background: #25D366;
+}
+
+.share-option.email {
+  background: #EA4335;
+}
+
+.share-option.sms {
+  background: #3478F6;
+}
+
+.share-option:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.share-option:active {
+  transform: translateY(0);
+}
+
+.close-button {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 0.25rem;
+  transition: all 0.2s ease;
+  opacity: 0.7;
+}
+
+.close-button:hover {
+  opacity: 1;
+  transform: rotate(90deg);
+}
+
+.podcast-studio {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Video container styles */
+.video-container-full {
+  flex: 1;
+  width: 100%;
+  height: calc(100% - 80px); /* Adjust for controls height */
+}
+
+.video-container-split {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: #000;
+}
+
+.video-container-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1px;
+  background: #000;
+}
+
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #111;
+}
+
+.video-stream {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Controls */
+.controls {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 20px;
+}
+
+.control-button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #333;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.control-button:hover {
+  background: #444;
+}
+
+.control-button.active {
+  background: #0056b3;
+}
+
+.control-button.recording {
+  background: #dc3545;
+}
+
+.control-button.end-call {
+  background: #dc3545;
+}
+
+/* Recording indicator */
+.recording-indicator {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(220, 53, 69, 0.8);
+  padding: 8px 16px;
+  border-radius: 20px;
+  color: white;
+}
+
+.indicator-icon {
+  color: #dc3545;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}

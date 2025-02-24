@@ -1,0 +1,36 @@
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    avatar_url TEXT,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE sessions (
+    id VARCHAR(255) PRIMARY KEY,
+    room_id VARCHAR(255) UNIQUE NOT NULL,
+    host_id INTEGER REFERENCES users(id),
+    title VARCHAR(255),
+    status VARCHAR(50) DEFAULT 'active',
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    ended_at TIMESTAMP WITH TIME ZONE
+);
+
+CREATE TABLE participants (
+    id SERIAL PRIMARY KEY,
+    session_id VARCHAR(255) REFERENCES sessions(id),
+    user_id INTEGER REFERENCES users(id),
+    joined_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    left_at TIMESTAMP WITH TIME ZONE
+);
+
+CREATE TABLE recordings (
+    id SERIAL PRIMARY KEY,
+    session_id VARCHAR(255) REFERENCES sessions(id),
+    user_id INTEGER REFERENCES users(id),
+    file_name VARCHAR(255) NOT NULL,
+    file_url TEXT NOT NULL,
+    duration INTEGER,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
